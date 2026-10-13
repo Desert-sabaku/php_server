@@ -10,9 +10,10 @@ try {
             PDO::ATTR_EMULATE_PREPARES => false,
         ]
     );
-    $query = "select * from gender";
+    $query = "select * from mybook";
     $table = $pdo->query($query);
-    echo "<table>";
+    echo "<table border=2>";
+    echo "<tr><th>ID</th><th>Gender</th></tr>";
     while ($row = $table->fetch()) {
         echo "<tr>";				 // 結果を表形式で表示
         echo "<td>" . $row['ID'] . "</td>";
