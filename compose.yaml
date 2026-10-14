@@ -5,8 +5,8 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./src:/var/www/html
-      - ./apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./src:/var/www/html:z
+      - ./apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf:ro,z
     depends_on:
       - mysql
 
@@ -23,7 +23,7 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro,z
 
 volumes:
   mysql_data:
